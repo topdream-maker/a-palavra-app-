@@ -1,0 +1,25 @@
+name: Validar baseline
+
+on:
+  push:
+    branches: [main, stabilize-baseline, baseline-v0.6-import]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validar sintaxe JavaScript
+        run: node --check app.js && node --check sw.js
+      - name: Validar JSON e corpus
+        run: node tests/validate-baseline.mjs
