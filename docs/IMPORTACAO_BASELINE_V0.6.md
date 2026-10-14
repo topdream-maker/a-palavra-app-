@@ -22,3 +22,7 @@ O áudio ambiente permanece apenas como parte da baseline para avaliação. A au
 ## Atualização de distribuição
 
 O áudio ambiente foi removido da distribuição pública nesta versão porque sua autorização de redistribuição ainda não foi comprovada. A remoção é reversível caso a documentação de direitos seja apresentada.
+
+## Publicação
+
+A publicação automática em GitHub Pages foi testada, mas o token da integração não possui o escopo específico para habilitar Pages (`Resource not accessible by integration`). O workflow foi removido para não manter uma execução quebrada. A aplicação permanece estática e pode ser publicada quando Pages for habilitado pelo proprietário ou em outro provedor estático.
