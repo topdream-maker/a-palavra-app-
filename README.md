@@ -16,3 +16,5 @@ A branch `stabilize-baseline` adiciona `36_criterios_canonicos.json`, um validad
 
 
 > O áudio ambiente foi removido da distribuição pública até que sua autorização de redistribuição seja comprovada.
+
+> A tela inicial agora usa uma imagem-piloto contemplativa otimizada para WebP; as demais imagens só serão geradas após a aprovação desta linguagem visual.
