@@ -6,7 +6,7 @@ const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const required = [
   'index.html', 'app.js', 'styles.css', 'sw.js', 'manifest.webmanifest',
-  'assets/icon-192.png', 'assets/icon-512.png', 'assets/hero-paz-piloto.webp',
+  'assets/icon-192.png', 'assets/icon-512.png', 'assets/hero-paz-piloto.webp', 'assets/reflexao-paz-piloto.webp', 'assets/quadro-institucional-piloto.webp',
   'data/biblia-livre-n4.json', 'data/marcos-n4.json', 'data/biblia-livre-n4-origem.json',
   '36_criterios_canonicos.json'
 ];
