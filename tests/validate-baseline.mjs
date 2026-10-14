@@ -29,5 +29,10 @@ const expected = 'e5863bb7388275432fa0ab4dad0ecccbbb6c60787109addb90e5d0a7b72826
 if (gates.length !== 36) fail(`gates esperados 36, encontrados ${gates.length}`);
 if (gatesHash !== expected) fail(`SHA dos gates divergente: ${gatesHash}`);
 
+const appSource = fs.readFileSync('app.js', 'utf8');
+for (const staleReference of ['ambiente-leitura.mp3', 'ambientAudio', 'bindMusicControls', 'toggleMusic', 'stopMusic']) {
+  if (appSource.includes(staleReference)) fail(`referência residual ao áudio removido: ${staleReference}`);
+}
+
 if (process.exitCode) process.exit();
 console.log(`OK: baseline válida — ${bible.length} livros, ${chapters} capítulos, ${verses} versículos, ${gates.length} gates`);
