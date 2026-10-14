@@ -18,3 +18,7 @@ Ainda não contém o motor de certificação dos 36 critérios, estudos certific
 ## Bloqueio de distribuição
 
 O áudio ambiente permanece apenas como parte da baseline para avaliação. A autorização de redistribuição pública ainda precisa ser comprovada antes de uma publicação pública.
+
+## Atualização de distribuição
+
+O áudio ambiente foi removido da distribuição pública nesta versão porque sua autorização de redistribuição ainda não foi comprovada. A remoção é reversível caso a documentação de direitos seja apresentada.

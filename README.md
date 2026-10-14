@@ -13,3 +13,6 @@ Consulte `docs/IMPORTACAO_BASELINE_V0.6.md`, `STATUS.md` e `TESTES.md` para o es
 ## Validação automática
 
 A branch `stabilize-baseline` adiciona `36_criterios_canonicos.json`, um validador determinístico sem dependências externas e o workflow `.github/workflows/validate.yml`. Isso verifica a integridade básica da baseline e do contrato canônico; não significa que a auditoria editorial dos estudos já esteja implementada.
+
+
+> O áudio ambiente foi removido da distribuição pública até que sua autorização de redistribuição seja comprovada.
