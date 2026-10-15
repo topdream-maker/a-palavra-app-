@@ -50,6 +50,7 @@ O leitor também possui marcação colorida por versículo. As marcações usam 
 - `.github/workflows/validate.yml`: validação automática no GitHub Actions.
 - `docs/AVALIACAO_PROJETO_2026-10-15.md`: diagnóstico técnico e riscos.
 - `docs/ANALISE_MUSICA_INSTRUMENTAL.md`: decisão de licenciamento do áudio.
+- `docs/PLANO_REGRA_DOS_36_API_E_AUDITORIA.md`: modelo de geração, auditoria, revisão humana e publicação estática.
 
 ## Estado editorial
 
