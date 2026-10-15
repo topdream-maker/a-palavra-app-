@@ -4,6 +4,10 @@ Aplicativo gratuito de leitura e estudo bíblico, com a Bíblia Livre N4 e recur
 
 Projeto em desenvolvimento.
 
+## Instruções do pacote
+
+Para usar o ZIP completo, comece por [`LEIA_PRIMEIRO.md`](LEIA_PRIMEIRO.md).
+
 ## Continuidade por outra IA
 
 Para outra instância Manus ou outra IA assumir o projeto, leia primeiro [`docs/CONTINUIDADE_PARA_OUTRA_IA.md`](docs/CONTINUIDADE_PARA_OUTRA_IA.md), [`AGENTS.md`](AGENTS.md), [`STATUS.md`](STATUS.md) e [`TESTES.md`](TESTES.md). O manual registra arquitetura, estado do GitHub, decisões editoriais, regras de licença, comandos de validação e próximos passos.
