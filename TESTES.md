@@ -8,7 +8,8 @@
 - Validador determinístico `tests/validate-baseline.mjs`.
 - Prévia HTTP responde com status 200.
 - Imagens WebP da tela inicial, reflexão e quadro institucional respondem com status 200.
-- Navegação visual verificada: tela inicial, temas, recursos e Sobre/Apoie.
+- Navegação visual verificada: tela inicial, temas, recursos, Sobre e Apoiar o projeto.
+- Leitor bíblico atualizado com acesso rápido a capítulos, seletor de versículos e marcação colorida persistente.
 - Cartões dos temas verificados com fundos visuais e texto legível na prévia.
 
 ## Pendente

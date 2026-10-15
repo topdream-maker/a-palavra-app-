@@ -30,10 +30,14 @@ if (gates.length !== 36) fail(`gates esperados 36, encontrados ${gates.length}`)
 if (gatesHash !== expected) fail(`SHA dos gates divergente: ${gatesHash}`);
 
 const serviceWorker = fs.readFileSync('sw.js', 'utf8');
+const appSource = fs.readFileSync('app.js', 'utf8');
 if (!serviceWorker.includes("const CACHE = 'a-palavra-v0.7.0'")) fail('versão esperada do cache não encontrada');
 if (!serviceWorker.includes("url.search = ''")) fail('service worker não normaliza parâmetros de versão');
 if (!serviceWorker.includes('cacheResponse(request, response)')) fail('service worker não atualiza o cache após buscar recursos');
-const appSource = fs.readFileSync('app.js', 'utf8');
+if (!appSource.includes('bibleHighlights')) fail('persistência de marcações de versículos não encontrada');
+if (!appSource.includes('chapterQuick')) fail('acesso rápido aos capítulos não encontrado');
+if (!appSource.includes('verseSelect')) fail('seletor de versículos não encontrado');
+if (!appSource.includes('apoie:')) fail('tela separada de apoio não encontrada');
 for (const staleReference of ['ambiente-leitura.mp3', 'ambientAudio', 'bindMusicControls', 'toggleMusic', 'stopMusic']) {
   if (appSource.includes(staleReference)) fail(`referência residual ao áudio removido: ${staleReference}`);
 }
