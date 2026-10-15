@@ -29,6 +29,10 @@ const expected = 'e5863bb7388275432fa0ab4dad0ecccbbb6c60787109addb90e5d0a7b72826
 if (gates.length !== 36) fail(`gates esperados 36, encontrados ${gates.length}`);
 if (gatesHash !== expected) fail(`SHA dos gates divergente: ${gatesHash}`);
 
+const serviceWorker = fs.readFileSync('sw.js', 'utf8');
+if (!serviceWorker.includes("const CACHE = 'a-palavra-v0.7.0'")) fail('versão esperada do cache não encontrada');
+if (!serviceWorker.includes("url.search = ''")) fail('service worker não normaliza parâmetros de versão');
+if (!serviceWorker.includes('cacheResponse(request, response)')) fail('service worker não atualiza o cache após buscar recursos');
 const appSource = fs.readFileSync('app.js', 'utf8');
 for (const staleReference of ['ambiente-leitura.mp3', 'ambientAudio', 'bindMusicControls', 'toggleMusic', 'stopMusic']) {
   if (appSource.includes(staleReference)) fail(`referência residual ao áudio removido: ${staleReference}`);

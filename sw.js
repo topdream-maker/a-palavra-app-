@@ -1,1 +1,72 @@
-const CACHE='a-palavra-v0.6.0';const CORE=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./assets/hero-paz-piloto.webp','./assets/reflexao-paz-piloto.webp','./assets/quadro-institucional-piloto.webp','./assets/icon-192.png','./assets/icon-512.png','./data/marcos-n4.json','./data/biblia-livre-n4.json','./data/biblia-livre-n4-origem.json'];self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('a-palavra-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const url=new URL(e.request.url);if(url.origin!==self.location.origin)return;if(e.request.mode==='navigate'){e.respondWith(fetch(e.request).catch(()=>caches.match('./index.html')));return}e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>res)));});
+const CACHE = 'a-palavra-v0.7.0';
+const CORE = [
+  './',
+  './index.html',
+  './styles.css',
+  './app.js',
+  './manifest.webmanifest',
+  './assets/hero-paz-piloto.webp',
+  './assets/reflexao-paz-piloto.webp',
+  './assets/quadro-institucional-piloto.webp',
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+  './data/marcos-n4.json',
+  './data/biblia-livre-n4.json',
+  './data/biblia-livre-n4-origem.json'
+];
+
+const sameOrigin = (request) => new URL(request.url).origin === self.location.origin;
+
+function cacheKey(request) {
+  const url = new URL(request.url);
+  url.search = '';
+  return new Request(url.href, { method: 'GET' });
+}
+
+async function cacheResponse(request, response) {
+  if (response && response.ok) {
+    const cache = await caches.open(CACHE);
+    await cache.put(cacheKey(request), response.clone());
+  }
+  return response;
+}
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE)
+      .then((cache) => cache.addAll(CORE))
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(
+        keys
+          .filter((key) => key.startsWith('a-palavra-') && key !== CACHE)
+          .map((key) => caches.delete(key))
+      ))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  const request = event.request;
+  if (request.method !== 'GET' || !sameOrigin(request)) return;
+
+  const key = cacheKey(request);
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then((response) => cacheResponse(request, response))
+        .catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(key)
+      .then((hit) => hit || fetch(request).then((response) => cacheResponse(request, response)))
+  );
+});
