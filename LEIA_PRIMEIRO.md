@@ -113,6 +113,7 @@ Não colocar chaves, tokens ou senhas no GitHub. A aplicação atual não precis
 - `AGENTS.md`: regras para agentes e IAs que trabalharem no código.
 - `docs/AVALIACAO_PROJETO_2026-10-15.md`: avaliação técnica, riscos e prioridades.
 - `docs/ANALISE_MUSICA_INSTRUMENTAL.md`: análise das opções de licenciamento de áudio.
+- `docs/PLANO_REGRA_DOS_36_API_E_AUDITORIA.md`: modelo de geração, auditoria, revisão humana e publicação estática.
 - `STATUS.md`: estado atual resumido.
 - `TESTES.md`: evidências e pendências de teste.
 - `README.md`: apresentação do repositório.
