@@ -101,6 +101,8 @@ As anotações, favoritos, progresso e marcações ficam no dispositivo. Não ex
 
 Não inventar estudos bíblicos ou explicações doutrinárias. Os temas ainda estão em preparação e não foram auditados.
 
+Quando os estudos começarem a ser produzidos, cada conteúdo deverá passar por duas auditorias independentes. Os dois auditores precisam aprovar todos os 36 critérios. Se um aprovar e o outro reprovar, o conteúdo fica bloqueado e volta para revisão; não existe aprovação por maioria.
+
 Não substituir o corpus bíblico sem verificar licença, origem e integridade. Manter os créditos da Bíblia Livre conforme o aplicativo já informa.
 
 Não adicionar música apenas porque ela está descrita como “sem copyright”. A música precisa ter licença individual e autorização compatível com redistribuição dentro de um aplicativo. Consulte `docs/ANALISE_MUSICA_INSTRUMENTAL.md`.

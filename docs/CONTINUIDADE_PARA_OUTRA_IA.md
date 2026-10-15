@@ -56,6 +56,8 @@ O leitor também possui marcação colorida por versículo. As marcações usam 
 
 Os estudos temáticos ainda estão em preparação. Os temas atuais são apenas cartões de navegação visual. Não adicionar explicações religiosas, devocionais ou doutrinárias como se fossem conteúdo aprovado sem que o proprietário forneça ou aprove uma fonte e um fluxo editorial.
 
+O modelo editorial definido é de **duas auditorias independentes obrigatórias**. Os dois auditores precisam aprovar todos os 36 critérios; uma aprovação e uma reprovação não formam maioria e não aprovam o estudo. Qualquer divergência, falha ou ausência de resposta bloqueia a publicação.
+
 A Bíblia Livre N4 deve continuar com seus créditos e licença conforme já documentado no aplicativo e no manifesto de origem. Não misturar texto bíblico, conteúdo autoral novo e referências editoriais sem deixar a origem clara.
 
 ## Estado visual

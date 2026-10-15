@@ -12,6 +12,22 @@ A API não é obrigatória para a primeira prova de conceito. Ela se torna recom
 
 Isso prova que o contrato não foi alterado acidentalmente. Ainda não prova que um estudo específico foi aprovado nos 36 critérios. Para isso, será necessário um resultado de auditoria por conteúdo.
 
+## Modelo de duas auditorias obrigatórias
+
+Para este projeto, o modelo adotado será de **duas auditorias independentes e obrigatórias**. Não será usado critério de maioria. O conteúdo só poderá ser publicado quando os dois auditores aprovarem todos os 36 critérios.
+
+| Auditoria A | Auditoria B | Resultado |
+|---|---|---|
+| aprovada | aprovada | pode seguir para revisão humana e publicação |
+| aprovada | reprovada | bloqueado |
+| reprovada | aprovada | bloqueado |
+| reprovada | reprovada | bloqueado |
+| dúvida, erro ou ausência de resposta | qualquer resultado | bloqueado |
+
+Os dois auditores devem ser independentes o suficiente para reduzir erro compartilhado. Podem ser provedores diferentes ou modelos/configurações diferentes, conforme disponibilidade e orçamento. A quantidade de auditores não substitui a qualidade da evidência: cada um deve justificar os 36 resultados.
+
+Se os auditores discordarem, o conteúdo volta para revisão e nova versão. A divergência não será resolvida por votação e não será tratada como aprovação parcial.
+
 ## Pipeline correta
 
 ### 1. Definição do alvo
@@ -35,9 +51,9 @@ A IA produz um rascunho estruturado, por exemplo:
 
 A geração deve guardar modelo, versão, data, prompt ou instruções, passagem de entrada e hash do resultado. Uma API facilita repetir esse processo em lote, mas a geração também pode ser feita manualmente por uma IA com os mesmos registros.
 
-### 3. Auditoria automática
+### 3. Auditorias independentes
 
-Um validador determinístico verifica formato, campos obrigatórios, referências, citações, limites de tamanho, ausência de chamadas proibidas e existência dos 36 resultados. Um auditor de linguagem pode auxiliar, mas não deve ser a única prova.
+Um validador determinístico verifica formato, campos obrigatórios, referências, citações, limites de tamanho, ausência de chamadas proibidas e existência dos 36 resultados. Depois, o estudo passa por Auditoria A e Auditoria B. Cada auditor produz seu próprio relatório, sem receber a decisão do outro.
 
 O resultado esperado por estudo é algo como:
 
@@ -45,14 +61,18 @@ O resultado esperado por estudo é algo como:
 {
   "study_id": "marcos-01-estudo-001",
   "status": "pending_human_review",
+  "audits": {
+    "auditor_a": {"status": "pass", "report": "evidence/auditor-a.json"},
+    "auditor_b": {"status": "pass", "report": "evidence/auditor-b.json"}
+  },
   "gates": {
-    "TARGET_FIDELITY": {"status": "pass", "evidence": "..."},
-    "CONTEXT_FIDELITY": {"status": "review", "evidence": "..."}
+    "TARGET_FIDELITY": {"auditor_a": "pass", "auditor_b": "pass", "evidence": "..."},
+    "CONTEXT_FIDELITY": {"auditor_a": "pass", "auditor_b": "pass", "evidence": "..."}
   }
 }
 ```
 
-Nenhum estudo deve ir para o aplicativo se algum gate estiver `fail`, `unknown` ou `review` sem decisão humana registrada.
+Nenhum estudo deve ir para o aplicativo se qualquer auditor estiver `fail`, `unknown`, `review`, indisponível ou sem evidência. Os dois auditores precisam estar `pass` em todos os gates.
 
 ### 4. Revisão humana/editorial
 
